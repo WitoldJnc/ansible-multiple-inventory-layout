@@ -1,4 +1,4 @@
-###Ansible multiple inventories template
+### Ansible multiple inventories template
 This structure helps to quickly change the target server for deployment
 file structure
 ~~~
@@ -52,5 +52,5 @@ ansible-playbook -i inventories/<test or dev> playbooks/deploy-app.yml
 ~~~
 
 
-####todo
--[ ] delete path to ssh and username from group_vars
+#### todo
+- [ ] delete path to ssh and username from group_vars
