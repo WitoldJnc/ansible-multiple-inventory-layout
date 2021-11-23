@@ -1,0 +1,5 @@
+
+[alpha_server]
+linux ansible_host=111.11.111.111
+
+

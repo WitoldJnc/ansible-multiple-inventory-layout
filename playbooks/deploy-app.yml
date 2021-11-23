@@ -1,0 +1,8 @@
+---
+- name: install helloapp
+  hosts: all
+  become: yes
+  roles:
+    - hello
+
+

@@ -1,0 +1,17 @@
+[Unit]
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/{{ destFolder }}/app/{{ service.hello.name }}
+Restart=on-abort
+
+ExecStart=/usr/bin/java \
+#-Xmx1024M \
+-Dcom.sun.management.jmxremote \
+-jar {{ service.hello.jar }}
+
+[Install]
+WantedBy=multi-user.target
+
+

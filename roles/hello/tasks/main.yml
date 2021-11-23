@@ -1,0 +1,39 @@
+---
+
+- name: ping
+  ping:
+
+- name: Create /{{ destFolder }}/app/{{ service.hello.name }}
+  file:
+    path: "/{{ destFolder }}/app/{{ service.hello.name }}"
+    state: directory
+  tags: patch
+
+- name: Copy jar 
+  copy:
+    src: "/ansible/project/{{ service.hello.jar }}"
+    dest: "/{{ destFolder }}/app/{{ service.hello.name }}"
+    mode: 0644
+
+- name: Create config file
+  template:
+    src: application.properties.j2
+    dest: "/{{ destFolder }}/app/{{ service.hello.name }}/application.properties"
+
+- name: Create systemd unit
+  template:
+    src: "{{ service.hello.name }}.service.j2"
+    dest: "/etc/systemd/system/{{ service.hello.name }}.service"
+
+- name: Reload systemd
+  systemd:
+    daemon-reload: yes
+    enabled: yes
+    state: started
+    name: "{{ service.hello.name }}"
+
+- name: Restart service
+  systemd:
+    state: restarted
+    name: "{{ service.hello.name }}"
+

@@ -1,0 +1,10 @@
+destFolder: u01
+service:
+  hello:
+    name: helloapp
+    port: 7031
+    jar: int.jar
+
+
+ansible_user: ubuntu
+ansible_ssh_private_key_file: /home/usr/.ssh/key.key
