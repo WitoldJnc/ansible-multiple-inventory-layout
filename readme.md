@@ -4,12 +4,12 @@ file structure
 ~~~
 .
 |-- ansible.cfg
-|-- inventories
+|-- inventories                         #inventories for diff stand
 |   |-- dev
 |   |   |-- group_vars
 |   |   |   `-- all
-|   |   |       `-- alpha_server.yml
-|   |   `-- hosts
+|   |   |       `-- alpha_server.yml    #common properties for generate application.properties from .j2 template
+|   |   `-- hosts                       #host list for dev stand
 |   `-- test
 |       |-- group_vars
 |       |   `-- all
@@ -18,17 +18,17 @@ file structure
 |-- playbooks
 |   `-- deploy-app.yml
 |-- project
-|   `-- int.jar
-`-- roles
+|   `-- int.jar                         #simple java app host:port/hello for result 
+`-- roles                               #ansible roles. usually created via ansible-galaxy init <role>
     `-- hello
         |-- README.md
-        |-- defaults
-        |   `-- main.yml
+        |-- defaults                    #default varriables
+        |   `-- main.yml         
         |-- tasks
-        |   `-- main.yml
+        |   `-- main.yml               
         `-- templates
-            |-- application.properties.j2
-            `-- helloapp.service.j2
+            |-- application.properties.j2     #j2 template to create application.properties
+            `-- helloapp.service.j2           #j2 template to spec java app
 ~~~
 download source code 
 
